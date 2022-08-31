@@ -16,11 +16,11 @@
     --header-background-color: #e3e3e3;
     --highlight-color: #000000;
     --featured-font-family: 'Archivo', sans-serif;
-    --character-top-image-src: url("../image/characters/kids-on-the-bike");
+    --character-top-image-src: url("../images/characters/kids-on-the-bike.svg");
     --character-top-image-color: #ffffff;
-    --character-bottom-image-src: url("../image/characters/inverted-world-monster.svg");
+    --character-bottom-image-src: url("../images/characters/inverted-world-monster.svg");
     --character-bottom-image-color: #e5e5e5;
-    --background-lamp-image: url("../image/backgrounds/lamps.png");
+    --background-lamp-image: url("../images/backgrounds/lamps.png");
     --footer-background-color: #b5bbbf;
 }
 
@@ -32,15 +32,26 @@
     --header-background-color: #220f0f;
     --highlight-color: #ffffff;
     --featured-font-family: 'Rubik Glitch', sans-serif;
-    --character-bottom-image-src: url("../image/characters/kids-on-the-bike.svg");
+    --character-bottom-image-src: url("../images/characters/kids-on-the-bike.svg");
     --character-bottom-image-color: rgba(255, 255, 255, 0.1);
-    --character-top-image-src: url("../image/characters/inverted-world-monster.svg");
+    --character-top-image-src: url("../images/characters/inverted-world-monster.svg");
     --character-top-image-color: #000;
-    --background-lamp-image: url("../image/backgrounds/lamps-inverted.png");
+    --background-lamp-image: url("../images/backgrounds/lamps-inverted.png");
     --footer-background-color: #000;  
 }
 
-/**Generic Styles**/
+.dark-theme button,
+.dark-theme h1,
+.dark-theme h2,
+.dark-theme h3 {
+  letter-spacing: 5px;
+  font-weight: normal;
+}
+
+.dark-theme .invert-element {
+    transform: rotateZ(180deg) scaleX(-1);
+  }
+  
 
 * {
     margin: 0;
@@ -50,26 +61,26 @@
 
 h1,
 h2,
-h3{
+h3 {
     font-family: var(--featured-font-family);
     font-size: 3rem;
     color: var(--primary-color);
     text-transform: uppercase;
-    margin-bottom: 40px;   
+    margin-bottom: 40px;
 }
 
-p{
+p {
     color: var(--highlight-color);
 }
 
 p,
 input,
 textarea,
-label{
+label {
     font-family: "Libre Baskerville", serif;
 }
 
-button{
+button {
     padding: 16px 32px;
     background-color: transparent;
     font-weight: 900;
@@ -80,9 +91,28 @@ button{
     transition: background 1s;
 }
 
-/** Syles Header **/
+input,
+textarea {
+  border: 2px solid var(--primary-color-contrast);
+  background-color: var(--field-background-color);
+  color: var(--primary-color-contrast);
+  padding: 8px;
+  margin-bottom: 24px;
+  font-size: 1rem;
+}
 
-header{
+label {
+  margin-bottom: 8px;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  border-color: black;
+}
+
+
+header {
     background-color: var(--header-background-color);
     min-height: 850px;
     display: flex;
@@ -96,7 +126,7 @@ header::before {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-image: url("src/image/banner/florest.webp");
+    background-image: url("../images/banner/florest.webp");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center 90%;
@@ -104,30 +134,56 @@ header::before {
     opacity: 0.2;
 }
 
-.header-content{
+.header-content {
     max-width: 700px;
     padding: 80px 20px;
     text-align: center;
     z-index: 2;
 }
 
-
-.header-content img{
+.header-content img {
     width: 80%;
 }
 
-.header-content p{
+.header-content p {
     margin: 30px 0 50px;
 }
 
-.header-content button{
+.header-content button {
     border: 3px solid var(--primary-color);
     color: var(--primary-color);
 }
 
-.header-content button:hover {
+.header-content button:hover{
     background-color: var(--primary-color);
     color: var(--primary-color-contrast);
 }
 
+.world-characters {
+    width: 100%;
+    max-width: 900px;
+    position: absolute;
+}
 
+#top-characters{
+    height: 100%;
+    background-color: var(--character-top-image-color);
+    bottom: -3px;
+    
+    mask: var(--character-top-image-src) bottom / contain no-repeat;
+    -webkit-mask: var(--character-top-image-src) bottom / contain no-repeat;
+}
+
+#bottom-characters{
+    height: 500px;
+    background-color: var(--character-bottom-image-color);
+    top: 3px;
+    transform: rotateZ(180deg) scaleX(-1);
+    position: relative;
+    
+    mask: var(--character-bottom-image-src) bottom / contain no-repeat;
+    -webkit-mask: var(--character-bottom-image-src) bottom / contain no-repeat;
+}
+
+
+  
